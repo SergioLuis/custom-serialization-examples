@@ -21,8 +21,8 @@ namespace SerializationExamples
             }
             millis = Environment.TickCount - ini;
 
-            Console.WriteLine(string.Format(
-                "Created {0} SeaMonster objects in {1} ms", TEST_SIZE, millis));
+            Console.WriteLine("Created {0} SeaMonster objects in {1} ms",
+                TEST_SIZE, millis);
 
             BinaryFormatter formatter = new BinaryFormatter();
             Stream st = new MemoryStream();
@@ -31,12 +31,10 @@ namespace SerializationExamples
             formatter.Serialize(st, testData);
             millis = Environment.TickCount - ini;
 
-            Console.WriteLine(string.Format(
-                "Serialized {0} SeaMonster objects the C# way in {1} ms.",
-                TEST_SIZE, millis));
+            Console.WriteLine("Serialized {0} SeaMonster objects the C# way in {1} ms.",
+                TEST_SIZE, millis);
 
-            Console.WriteLine(string.Format(
-                "The stream has {0} bytes written.", st.Position));
+            Console.WriteLine("The stream has {0} bytes written.", st.Position);
 
             st.Position = 0;
 
@@ -44,9 +42,8 @@ namespace SerializationExamples
             List<SeaMonster> deserTestData = formatter.Deserialize(st) as List<SeaMonster>;
             millis = Environment.TickCount - ini;
 
-            Console.WriteLine(string.Format(
-                "Deserialized {0} SeaMonster objects the C# way in {1} ms.",
-                TEST_SIZE, millis));
+            Console.WriteLine("Deserialized {0} SeaMonster objects the C# way in {1} ms.",
+                TEST_SIZE, millis);
 
             for (int i = 0; i < testData.Count; i++)
             {
@@ -62,12 +59,10 @@ namespace SerializationExamples
             SerializeSeaMonsterList(testData, writer);
             millis = Environment.TickCount - ini;
 
-            Console.WriteLine(string.Format(
-                "Serialized {0} SeaMonster objects the custom way in {1} ms.",
-                TEST_SIZE, millis));
+            Console.WriteLine("Serialized {0} SeaMonster objects the custom way in {1} ms.",
+                TEST_SIZE, millis);
 
-            Console.WriteLine(string.Format(
-                "The stream has {0} bytes written.", st.Position));
+            Console.WriteLine("The stream has {0} bytes written.", st.Position);
 
             st.Position = 0;
             BinaryReader reader = new BinaryReader(st);
@@ -76,9 +71,8 @@ namespace SerializationExamples
             deserTestData = DeserializeSeaMonsterList(reader);
             millis = Environment.TickCount - ini;
 
-            Console.WriteLine(string.Format(
-                "Deserialized {0} SeaMonster objects the custom way in {1} ms.",
-                TEST_SIZE, millis));
+            Console.WriteLine("Deserialized {0} SeaMonster objects the custom way in {1} ms.",
+                TEST_SIZE, millis);
 
             for (int i = 0; i < testData.Count; i++)
             {
